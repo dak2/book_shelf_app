@@ -11,8 +11,11 @@ table
       th
 
   tbody
-    - @response
-
+    - @books.each do |book|
+      tr
+        td = book.title
+        td = book.author
+        td = book.user_id
 br
 
 = link_to 'New Book', new_book_path

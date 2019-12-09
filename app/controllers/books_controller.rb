@@ -1,13 +1,10 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  require 'net/http'
 
   # GET /books
   # GET /books.json
   def index
-    url = "https://www.googleapis.com/books/v1/volumes?q='ruby'"
-    @response = Net::HTTP.get_response(URI.parse(url))
-
+    @books = Book.all
   end
 
   # GET /books/1
