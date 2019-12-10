@@ -7,6 +7,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="navbar-brand">本棚アプリ</div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,13 +19,10 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">投稿</a>
+          <a class="nav-link" href="posts#index">投稿</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">本棚</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="libraries#index">本棚</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
@@ -31,9 +31,6 @@
       </form>
     </div>
   </nav>
-  </head>
-
-  <body>
     <%= yield %>
   </body>
 </html>
