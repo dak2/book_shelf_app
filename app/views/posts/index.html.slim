@@ -1,6 +1,6 @@
-table
+table.table-center.margin-top
   thead
-    tr
+    tr.table-center
       th Title
       th Content
       th User
@@ -11,7 +11,7 @@ table
 
   tbody
     - @posts.each do |post|
-      tr
+      tr.table-center
         td = post.title
         td = post.content
         td = post.user_id
@@ -22,4 +22,4 @@ table
 
 br
 
-= link_to 'New Post', new_post_path
+= link_to 'New Post', new_post_path, { class: "link-center" }

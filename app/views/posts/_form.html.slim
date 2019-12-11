@@ -6,16 +6,16 @@
         - @post.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .field.field-center
     = f.label :title
     = f.text_field :title
-  .field
+  .field.field-center
     = f.label :content
     = f.text_area :content
-  .field
+  .field.field-center
     = f.label :user_id
     = f.number_field :user_id
-  .field
+  .field.field-center
     = f.label :book_id
     = f.number_field :book_id
-  .actions = f.submit
+  .actions.field-center = f.submit
