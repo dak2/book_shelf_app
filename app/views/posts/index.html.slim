@@ -14,12 +14,12 @@ table.table-center.margin-top
       tr.table-center
         td = post.title
         td = post.content
-        td = post.user_id
-        td = post.book_id
-        td = link_to 'Show', post
-        td = link_to 'Edit', edit_post_path(post)
-        td = link_to 'Destroy', post, data: { confirm: 'Are you sure?' }, method: :delete
+        td = User.find(post.user_id).name
+        td = Book.find(post.book_id).title
+        td = link_to t('activerecord.attributes.post.pages.show'), post
+        td = link_to t('activerecord.attributes.post.pages.edit'), edit_post_path(post)
+        td = link_to t('activerecord.attributes.post.pages.destroy'), post, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Post', new_post_path, { class: "link-center" }
+= link_to t('activerecord.attributes.post.pages.new'), new_post_path, { class: "link-center" }

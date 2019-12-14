@@ -15,10 +15,10 @@ table
         td = library.content
         // fix to "library.book.title"
         td = Book.find(library.book_id).title
-        td = link_to 'Show', library
-        td = link_to 'Edit', edit_library_path(library)
-        td = link_to 'Destroy', library, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to t('activerecord.attributes.library.pages.show'), library
+        td = link_to t('activerecord.attributes.library.pages.edit'), edit_library_path(library)
+        td = link_to t('activerecord.attributes.library.pages.destroy'), library, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Library', new_library_path
+= link_to t('activerecord.attributes.library.pages.new'), new_library_path, { class: "link-center" }

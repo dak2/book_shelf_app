@@ -1,3 +1,41 @@
 // Place all the styles related to the libraries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.text-center {
+  text-align: center;
+}
+
+.table-center {
+  margin: auto;
+}
+
+.margin-top {
+  margin-top: 50px;
+}
+
+.link-center {
+  display: block;
+  margin: auto;
+  text-align: center;
+  width: 100px;
+}
+
+.field-center {
+  display: block;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+  margin-top: 50px;
+}
+
+thead {
+  background-color: darkseagreen;
+}
+
+td, th {
+  border: 1px solid black;
+  padding: 10px;
+}

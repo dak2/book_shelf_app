@@ -1,15 +1,15 @@
-p#notice = notice
+p.text-center#notice = notice
 
-p
+p.text-center
   strong Name:
   = @library.name
-p
+p.text-center
   strong Content:
   = @library.content
-p
+p.text-center
   strong Book:
   = Book.find(@library.book_id).title
 
-=> link_to 'Edit', edit_library_path(@library)
-'|
-=< link_to 'Back', libraries_path
+=> link_to t('activerecord.attributes.library.pages.edit'), edit_library_path(@library), { class: "link-center" }
+
+=< link_to t('pages.back'), libraries_path, { class: "link-center" }

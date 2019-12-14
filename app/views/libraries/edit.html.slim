@@ -1,8 +1,8 @@
-h1 Editing library
+h1.text-center 本棚の編集
 
 == render 'form'
 
-=> link_to 'Show', @library
-'|
-=< link_to 'Back', libraries_path
+=> link_to t('activerecord.attributes.library.pages.show'), @library, { class: "link-center" }
+
+=< link_to t('pages.back'), libraries_path, { class: "link-center" }
 
