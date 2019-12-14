@@ -28,7 +28,7 @@ class LibrariesController < ApplicationController
 
     respond_to do |format|
       if @library.save
-        format.html { redirect_to @library, notice: 'Library was successfully created.' }
+        format.html { redirect_to @library, notice: t('activerecord.flash.library.success') }
         format.json { render :show, status: :created, location: @library }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class LibrariesController < ApplicationController
   def update
     respond_to do |format|
       if @library.update(library_params)
-        format.html { redirect_to @library, notice: 'Library was successfully updated.' }
+        format.html { redirect_to @library, notice: t('activerecord.flash.library.update') }
         format.json { render :show, status: :ok, location: @library }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class LibrariesController < ApplicationController
   def destroy
     @library.destroy
     respond_to do |format|
-      format.html { redirect_to libraries_url, notice: 'Library was successfully destroyed.' }
+      format.html { redirect_to libraries_url, notice: t('activerecord.flash.library.destroy') }
       format.json { head :no_content }
     end
   end

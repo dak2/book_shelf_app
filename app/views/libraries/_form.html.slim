@@ -6,13 +6,13 @@
         - @library.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label "本棚名"
+  .field.field-center
+    = f.label :name
     = f.text_field :name
-  .field
-    = f.label "説明欄"
+  .field.field-center
+    = f.label :content
     = f.text_area :content
-  .field
-    = f.label "本"
+  .field.field-center
+    = f.label :book_id
     = f.number_field :book_id
-  .actions = f.submit
+  .actions.field-center = f.submit

@@ -1,8 +1,8 @@
-h1.text-center Editing post
+h1.text-center 投稿の編集
 
 == render 'form'
 
-=> link_to 'Show', @post, { class: "link-center" }
+=> link_to t('activerecord.attributes.post.pages.show'), @post, { class: "link-center" }
 
-=< link_to 'Back', posts_path, { class: "link-center" }
+=< link_to t('pages.back'), posts_path, { class: "link-center" }
 
