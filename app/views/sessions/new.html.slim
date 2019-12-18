@@ -1,15 +1,13 @@
-.row
-  .col-md-6.col-md-offset-3
-  = form_for(:session, url: login_path) do |f|
-    .field
-      = f.label :name
-      = f.text_field :name, { class: "form-control" }
+= form_for(:session, url: login_path) do |f|
+  .field.text-center.is-width-30per.is-block-center
+    = f.label :email
+    = f.text_field :email, { class: "form-control" }
 
-    .field
-      = f.label :password
-      = f.text_field :password, { class: "form-control" }
+  .field.text-center.is-width-30per.is-block-center
+    = f.label :password
+    = f.text_field :password, { class: "form-control" }
 
-    .actions= f.submit
+  .actions.text-center= f.submit
 
-    = link_to ">新規登録", new_user_path, { class: "link-center" } 
+  = link_to ">新規登録", new_user_path, { class: "link-center" }
     
