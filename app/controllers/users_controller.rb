@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       current_user
-      binding.pry
       redirect_to root_path
     else
       render :new
