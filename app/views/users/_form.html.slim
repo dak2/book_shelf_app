@@ -6,10 +6,13 @@
         - @user.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .field.field-center
     = f.label :name
     = f.text_field :name
-  .field
+  .field.field-center
     = f.label :email
     = f.text_field :email
-  .actions = f.submit
+  .field.field-center
+    = f.label :password
+    = f.text_field :password
+  .actions.field-center = f.submit
