@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  require 'net/http'
+  require 'uri'
+  require 'json'
 
   # GET /books
   # GET /books.json
@@ -25,6 +28,7 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
+    get_book(book_params[:title])
 
     respond_to do |format|
       if @book.save
@@ -56,19 +60,33 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.html { redirect_to books_uri, notice: 'Book was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def book_params
-      params.require(:book).permit(:title, :author, :user_id)
-    end
+  # Get book infomation with google books api
+  def get_book(title)
+    uri = URI.parse("https://www.googleapis.com/books/v1/volumes?q=rails")
+    book_hash = connect_api(uri)
+  end
+
+  def connect_api(uri)
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = https.request(request)
+    JSON.parse(response.body)
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def book_params
+    params.require(:book).permit(:title, :author, :user_id)
+  end
 end
