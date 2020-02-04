@@ -73,3 +73,4 @@ gem 'jquery-rails'
 
 gem 'rails-i18n'
 gem 'bcrypt'
+gem 'ridgepole'

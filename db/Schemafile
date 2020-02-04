@@ -1,0 +1,6 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+require 'books.schema'
+require 'libraries.schema'
+require 'posts.schema'
+require 'users.schema'

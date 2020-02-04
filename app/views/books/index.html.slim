@@ -1,21 +1,16 @@
-h1 Listing books
+h3 本一覧
 
 table
   thead
     tr
       th Title
-      th Author
-      th User
-      th
-      th
-      th
+      th Description
 
   tbody
     - @books.each do |book|
       tr
         td = book.title
-        td = book.author
-        td = book.user_id
+        td = book.description
 br
 
-= link_to 'New Book', new_book_path
+= link_to '本の新規登録', new_book_path

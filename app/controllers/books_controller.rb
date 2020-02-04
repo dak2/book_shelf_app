@@ -17,7 +17,6 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    @book = Book.new
   end
 
   # GET /books/1/edit
@@ -27,12 +26,11 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
-    get_book(book_params[:title])
+    @book = Book.new(get_book_with_api(book_params[:title]))
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.html { redirect_to @book, notice: '本を新規登録しました。' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -46,7 +44,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to @book, notice: '本の情報を更新しました。' }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }
@@ -71,10 +69,11 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  # Get book infomation with google books api
-  def get_book(title)
-    uri = URI.parse("https://www.googleapis.com/books/v1/volumes?q=rails")
-    book_hash = connect_api(uri)
+  # Get book info with google books api
+  def get_book_with_api(title)
+    uri = URI.parse("https://www.googleapis.com/books/v1/volumes?q=#{title}")
+    @book_info_hash = connect_api(uri)["items"].first["volumeInfo"]
+                     .select{ |key, value| key == "title" || key == "description" }
   end
 
   def connect_api(uri)
@@ -87,6 +86,6 @@ class BooksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def book_params
-    params.require(:book).permit(:title, :author, :user_id)
+    params.require(:book).permit(:title, :description)
   end
 end
