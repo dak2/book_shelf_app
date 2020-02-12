@@ -8,6 +8,14 @@ p
   strong Description:
   = @book.description
 
+p
+  strong Publisher:
+  = @book.publisher
+
+p
+  strong PublishedDate::
+  = @book.published_date
+
 => link_to 'Edit', edit_book_path(@book)
 '|
 =< link_to 'Back', books_path
