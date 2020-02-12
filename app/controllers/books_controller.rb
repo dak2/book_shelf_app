@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  require 'net/http'
+  require 'uri'
+  require 'json'
 
   # GET /books
   # GET /books.json
@@ -24,11 +27,11 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = Book.new(book_params)
+    @book = Book.new(get_book_with_api(book_params[:title]))
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.html { redirect_to @book, notice: '本を新規登録しました。' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to @book, notice: '本の情報を更新しました。' }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }
@@ -56,19 +59,42 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.html { redirect_to books_uri, notice: '本を削除しました。' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_book
+    @book = Book.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def book_params
-      params.require(:book).permit(:title, :author, :user_id)
+  # Get book info with google books api
+  def get_book_with_api(title)
+    uri = URI.parse(URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{title}"))
+    book_response = connect_api(uri)["items"].first["volumeInfo"]
+                     .select{ |key, value| key == "title" || key == "description" || key == "publisher" || key == "publishedDate" || key == "imageLinks"}
+    @book_info_hash = book_response.inject({}) do |hash, (key, value)|
+      if key.underscore == "image_links"
+        hash[key.underscore] = book_response["imageLinks"]["smallThumbnail"]
+      else
+        hash[key.underscore] = value
+      end
+      hash
     end
+  end
+
+  def connect_api(uri)
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = https.request(request)
+    JSON.parse(response.body)
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def book_params
+    params.require(:book).permit(:title, :description)
+  end
 end

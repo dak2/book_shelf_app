@@ -1,0 +1,13 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  t.text "title", null: false
+  t.string "image_links"
+  t.text "description"
+  t.string "publisher"
+  t.string "published_date"
+  t.integer "library_id"
+  t.integer "post_id"
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end

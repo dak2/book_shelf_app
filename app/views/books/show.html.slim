@@ -3,12 +3,18 @@ p#notice = notice
 p
   strong Title:
   = @book.title
+
 p
-  strong Author:
-  = @book.author
+  strong Description:
+  = @book.description
+
 p
-  strong User:
-  = @book.user_id
+  strong Publisher:
+  = @book.publisher
+
+p
+  strong PublishedDate::
+  = @book.published_date
 
 => link_to 'Edit', edit_book_path(@book)
 '|
