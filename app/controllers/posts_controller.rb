@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_books, only: %i(edit new)
+  before_action :set_users, only: %i(edit new)
 
   # GET /posts
   # GET /posts.json
@@ -65,6 +67,14 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def set_books
+      @books = Book.all.pluck(:title, :id)
+    end
+
+    def set_users
+      @users = User.all.pluck(:name, :id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
