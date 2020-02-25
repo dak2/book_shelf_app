@@ -6,7 +6,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.preload(:books, :users).all
+    posted_user_ids = User.has_posted.pluck(:id)
+    @posts = Post.preload(:books, :users).where(user_id: posted_user_ids)
   end
 
   # GET /posts/1
@@ -27,6 +28,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    posted_user = User.find(post_params[:user_id])
+    posted_user.has_posted!
 
     respond_to do |format|
       if @post.save

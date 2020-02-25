@@ -6,5 +6,6 @@ create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cas
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
   t.integer "post_id"
+  t.boolean "posted_status"
   t.string "password_digest"
 end
