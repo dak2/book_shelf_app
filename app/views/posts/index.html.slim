@@ -1,24 +1,25 @@
-table.table-center.margin-top
-  thead
-    tr.table-center
-      th Title
-      th Content
-      th User
-      th Book
-      th
-      th
-      th
+- @posts.each do |post|
+  .box
+    span.circle = 'UserImage'
+    p = User.find(post.user_id).name
 
-  tbody
-    - @posts.each do |post|
-      tr.table-center
-        td = post.title
-        td = post.content
-        td = User.find(post.user_id).name
-        td = Book.find(post.book_id).title
-        td = link_to t('activerecord.attributes.post.pages.show'), post
-        td = link_to t('activerecord.attributes.post.pages.edit'), edit_post_path(post)
-        td = link_to t('activerecord.attributes.post.pages.destroy'), post, data: { confirm: 'Are you sure?' }, method: :delete
+    table.table-center.margin-top
+      thead
+        tr.table-center
+          th Image
+          th Book
+          th Content
+          th
+
+
+      tbody
+        tr.table-center
+          td = image_tag Book.find(post.book_id).image_links
+          td = Book.find(post.book_id).title
+          td = post.content
+          td = link_to t('activerecord.attributes.post.pages.show'), post
+          / td = link_to t('activerecord.attributes.post.pages.edit'), edit_post_path(post)
+          / td = link_to t('activerecord.attributes.post.pages.destroy'), post, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 

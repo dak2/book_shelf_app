@@ -1,10 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_books, only: %i(edit new)
+  before_action :set_users, only: %i(edit new)
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.preload(:books, :users).all
+    posted_user_ids = User.has_posted.pluck(:id)
+    @posts = Post.preload(:books, :users).where(user_id: posted_user_ids)
   end
 
   # GET /posts/1
@@ -25,6 +28,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    posted_user = User.find(post_params[:user_id])
+    posted_user.has_posted!
 
     respond_to do |format|
       if @post.save
@@ -65,6 +70,14 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def set_books
+      @books = Book.all.pluck(:title, :id)
+    end
+
+    def set_users
+      @users = User.all.pluck(:name, :id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

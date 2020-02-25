@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'posts#index'
+  root 'sessions#new'
   get '/libraries', to: 'libraries#index'
   get 'login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

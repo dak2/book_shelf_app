@@ -13,3 +13,15 @@
 .is-block-center {
   margin: auto;
 }
+
+.box {
+  padding: 0.5em 1em;
+  margin: auto;
+  margin-top: 5%;
+  color: #FFF;
+  background: #6eb7ff;
+  border-bottom: solid 6px #3f87ce;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  width: 50%;
+}

@@ -1,13 +1,17 @@
+- if action_name == "create"
+  .alert.alert-danger.is-width-30per.is-block-center
+    メールアドレスまたはパスワードが正しくありません
+
 = form_for(:session, url: login_path) do |f|
-  .field.text-center.is-width-30per.is-block-center
-    = f.label :email
-    = f.text_field :email, { class: "form-control" }
+  .box
+    .field.text-center.is-width-30per.is-block-center
+      = f.label :email
+      = f.text_field :email, { class: "form-control" }
 
-  .field.text-center.is-width-30per.is-block-center
-    = f.label :password
-    = f.text_field :password, { class: "form-control" }
+    .field.text-center.is-width-30per.is-block-center
+      = f.label :password
+      = f.text_field :password, { class: "form-control" }
 
-  .actions.text-center= f.submit
+    .text-center= f.submit "ログイン"
 
-  = link_to ">新規登録", new_user_path, { class: "link-center" }
-    
+    = link_to ">新規登録", new_user_path, { class: "link-center" }

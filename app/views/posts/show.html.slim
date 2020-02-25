@@ -9,10 +9,10 @@
     = @post.content
   p
     strong User:
-    = @post.user_id
+    = User.find(@post.user_id).name
   p
     strong Book:
-    = @post.book_id
+    = Book.find(@post.book_id).title
 
 => link_to t('activerecord.attributes.post.pages.edit'), edit_post_path(@post), { class: "link-center" }
 

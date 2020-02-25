@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :books
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_secure_password
 
   validates :name, presence: true
@@ -9,4 +9,9 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
+
+  enum posted_status: { 
+    has_posted: 0,
+    has_not_posted: 1
+  }
 end

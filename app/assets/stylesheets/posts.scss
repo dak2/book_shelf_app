@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.width-20-per {
+  width: 20%;
+}
+
 .table-center {
   margin: auto;
 }
@@ -23,4 +27,27 @@
 .field-center {
   display: block;
   text-align: center;
+}
+
+.box {
+  padding: 0.5em 1em;
+  margin: auto;
+  margin-top: 3%;
+  color: #FFF;
+  background: #6eb7ff;
+  border-bottom: solid 6px #3f87ce;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  width: 50%;
+}
+
+.circle {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  color: #000000;
+  border-radius: 50%;
+  text-align:center;
+  line-height: 100px;
+  background-color: #FFF;
 }
