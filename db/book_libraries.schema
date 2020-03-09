@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "book_libraries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  t.bigint "book_id", null: false
+  t.bigint "library_id", null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  t.index ["book_id"], name: "index_book_libraries_on_book_id"
+  t.index ["library_id"], name: "index_book_libraries_on_library_id"
+end

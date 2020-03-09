@@ -2,6 +2,9 @@ module SessionsHelper
 
   def log_in(user)
     session[:user_id] = user.id
+    ## daichi
+    ## daichi@test.com
+    ## daichi
   end
 
   def current_user

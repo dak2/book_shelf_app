@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="navbar-brand">本棚アプリ</div>
+  <div class="navbar-brand">
+    = link_to '本棚アプリ', posts_path, class: "white"
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,19 +9,19 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-      - if @current_user
+      - if logged_in?
         .nav-link
-          = link_to '投稿', root_path
+          = link_to '投稿', new_post_path, class: "white"
       </li>
       <li class="nav-item">
-      - if @current_user
+      - if logged_in?
         .nav-link
-          = link_to '本棚', libraries_path
+          = link_to '本棚', libraries_path, class: "white"
       </li>
     </ul>
     - if logged_in?
-      = link_to "log_out", logout_path, method: :delete
+      = link_to "log_out", logout_path, method: :delete, class: "white"
     - else
-      = link_to "log_in", login_path
+      = link_to "log_in", login_path, class: "white"
   </div>
 </nav>
