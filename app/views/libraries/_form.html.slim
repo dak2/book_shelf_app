@@ -14,5 +14,5 @@
     = f.text_area :content
   .field.field-center
     = f.label :book_id
-    = f.number_field :book_id
+    = f.select :book_id, @books, class: 'width-20-per'
   .actions.field-center = f.submit

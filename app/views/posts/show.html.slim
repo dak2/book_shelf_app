@@ -1,19 +1,17 @@
-.text-center
-  p#notice = notice
+p#notice = notice
 
-  p
-    strong Title:
-    = @post.title
-  p
-    strong Content:
-    = @post.content
-  p
-    strong User:
-    = User.find(@post.user_id).name
-  p
-    strong Book:
-    = Book.find(@post.book_id).title
-
-=> link_to t('activerecord.attributes.post.pages.edit'), edit_post_path(@post), { class: "link-center" }
+table
+  tr
+    th Title
+    td = @post.title
+  tr
+    th Content
+    td = @post.content
+  tr
+    th Book
+    td = @post.book.title
+  tr
+    th Image
+    td = image_tag @post.book.image_links
 
 =< link_to t('pages.back'), posts_path, { class: "link-center" }

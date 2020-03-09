@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     posted_user_ids = User.has_posted.pluck(:id)
-    @posts = Post.preload(:books, :users).where(user_id: posted_user_ids)
+    @posts = Post.includes(:book, :user).where(user_id: posted_user_ids)
   end
 
   # GET /posts/1
@@ -67,21 +67,21 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    def set_books
-      @books = Book.all.pluck(:title, :id)
-    end
+  def set_books
+    @books = Book.all.pluck(:title, :id)
+  end
 
-    def set_users
-      @users = User.all.pluck(:name, :id)
-    end
+  def set_users
+    @users = User.all.pluck(:name, :id)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :content, :user_id, :book_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params.require(:post).permit(:title, :content, :user_id, :book_id)
+  end
 end
