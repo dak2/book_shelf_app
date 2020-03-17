@@ -16,3 +16,21 @@
 // const imagePath = (name) => images(name, true)
 
 console.log('Hello World from Webpacker')
+
+import Vue from "vue";
+import App from "../app.vue";
+import Sample from "../sample.vue";
+
+document.addEventListener('turbolinks:load', () => {
+  const app = new Vue({
+    el: "#app",
+    render: h => h(App)
+  })
+})
+
+document.addEventListener('turbolinks:load', () => {
+  const sample = new Vue({
+    el: "#sample",
+    render: h => h(Sample)
+  })
+})

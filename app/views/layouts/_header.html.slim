@@ -18,6 +18,11 @@
         .nav-link
           = link_to '本棚', libraries_path, class: "white"
       </li>
+      <li class="nav-item">
+      - if logged_in?
+        .nav-link
+          = link_to '本', new_book_path, class: "white"
+      </li>
     </ul>
     - if logged_in?
       = link_to "log_out", logout_path, method: :delete, class: "white"
