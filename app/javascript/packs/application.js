@@ -18,19 +18,13 @@
 console.log('Hello World from Webpacker')
 
 import Vue from "vue";
-import App from "../app.vue";
-import Sample from "../sample.vue";
+import PostInfos from "../post-infos.vue";
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
+  const node = document.getElementById("post");
+  const props = JSON.parse(node.getAttribute("data"));
   const app = new Vue({
-    el: "#app",
-    render: h => h(App)
-  })
-})
-
-document.addEventListener('turbolinks:load', () => {
-  const sample = new Vue({
-    el: "#sample",
-    render: h => h(Sample)
-  })
+    render: h => h(PostInfos, { props })
+  }).$mount();
+  document.body.appendChild(app.$el);
 })

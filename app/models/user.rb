@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  post_id         :integer
+#  posted_status   :boolean
+#  password_digest :string(255)
+#
 class User < ApplicationRecord
   has_many :books
   has_many :posts, dependent: :destroy

@@ -1,21 +1,3 @@
-= form_for @post do |f|
-  - if @post.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-      ul
-        - @post.errors.full_messages.each do |message|
-          li = message
+= post_infos(@books)
 
-  .field.field-center
-    = f.label :title
-    = f.text_field :title, class: 'width-20-per'
-  .field.field-center
-    = f.label :content
-    = f.text_area :content, class: 'width-20-per'
-  .field.field-center
-    = f.label :user_id
-    = f.select :user_id, @users, class: 'width-20-per'
-  .field.field-center
-    = f.label :book_id
-    = f.select :book_id, @books, class: 'width-20-per'
-  .actions.field-center = f.submit
+= javascript_pack_tag 'application'
