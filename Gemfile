@@ -75,3 +75,6 @@ gem 'rails-i18n'
 gem 'bcrypt'
 gem 'ridgepole'
 gem 'kaminari'
+
+## devise
+gem 'devise'

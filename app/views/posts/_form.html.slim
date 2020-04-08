@@ -13,9 +13,6 @@
     = f.label :content
     = f.text_area :content, class: 'width-20-per'
   .field.field-center
-    = f.label :user_id
-    = f.select :user_id, @users, class: 'width-20-per'
-  .field.field-center
     = f.label :book_id
     = f.select :book_id, @books, class: 'width-20-per'
   .actions.field-center = f.submit

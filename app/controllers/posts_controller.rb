@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_books, only: %i(edit new)
   before_action :set_users, only: %i(edit new)
@@ -28,7 +29,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    posted_user = User.find(post_params[:user_id])
+    posted_user = User.find(current_user.id)
     posted_user.has_posted!
 
     respond_to do |format|
@@ -82,6 +83,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:title, :content, :user_id, :book_id)
+    params.require(:post).permit(:title, :content, :book_id)
   end
 end
