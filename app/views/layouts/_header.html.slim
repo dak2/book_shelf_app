@@ -9,19 +9,24 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-      - if logged_in?
+      - if user_signed_in?
         .nav-link
-          = link_to '投稿', new_post_path, class: "white"
+          = link_to '投稿', posts_path, class: "white"
       </li>
       <li class="nav-item">
-      - if logged_in?
+      - if user_signed_in?
         .nav-link
           = link_to '本棚', libraries_path, class: "white"
       </li>
+      <li class="nav-item">
+      - if user_signed_in?
+        .nav-link
+          = link_to '本', books_path, class: "white"
+      </li>
     </ul>
-    - if logged_in?
-      = link_to "log_out", logout_path, method: :delete, class: "white"
+    - if user_signed_in?
+      = link_to "log_out", destroy_user_session_path, method: :delete, class: "white"
     - else
-      = link_to "log_in", login_path, class: "white"
+      = link_to "log_in", new_user_session_path, class: "white"
   </div>
 </nav>
