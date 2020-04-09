@@ -29,8 +29,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    posted_user = User.find(current_user.id)
-    posted_user.has_posted!
+    @post.user_id = current_user.id
+    user_posted!
 
     respond_to do |format|
       if @post.save
@@ -79,6 +79,11 @@ class PostsController < ApplicationController
 
   def set_users
     @users = User.all.pluck(:name, :id)
+  end
+
+  def user_posted!
+    posted_user = User.find(current_user.id)
+    posted_user.has_posted!
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
