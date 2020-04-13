@@ -1,25 +1,21 @@
 - @posts.each do |post|
-  .post-container
-    span.circle = 'UserImage'
-    p = post.user.name
-    .container
-      table.table-center
-        thead
-          tr.table-center
-            th Image
-            th Book
-            th Content
-            th
+  table.responsive-table
+    thead
+      tr
+        th Image
+        th Book
+        th Content
+        th
 
 
-        tbody
-          tr.table-center
-            td = image_tag post.book.image_links
-            td = post.book.title
-            td = post.content
-            td = link_to t('activerecord.attributes.post.pages.show'), post
-            / td = link_to t('activerecord.attributes.post.pages.edit'), edit_post_path(post)
-            / td = link_to t('activerecord.attributes.post.pages.destroy'), post, data: { confirm: 'Are you sure?' }, method: :delete
+    tbody
+      tr
+        td = image_tag post.book.image_links
+        td = post.book.title
+        td = post.content
+        td = link_to t('activerecord.attributes.post.pages.show'), post
+        / td = link_to t('activerecord.attributes.post.pages.edit'), edit_post_path(post)
+        / td = link_to t('activerecord.attributes.post.pages.destroy'), post, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
