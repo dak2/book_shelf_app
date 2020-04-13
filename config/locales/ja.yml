@@ -1,3 +1,13 @@
 ja:
   pages:
     back: 戻る
+  toppage:
+    title: Let's share book.
+    explanation:
+      explanation_1: ShareBookは、書籍共有のためのコミュニティアプリです。
+      explanation_2: 読んだ本の感想や自分が持っている本のリストを本棚として共有できます。
+      explanation_3: 読んだ本の感想を共有してインプットとアウトプットができるだけでなく、
+      explanation_4: 本棚の共有を通じて本の管理までできます。
+      explanation_5: さあ、あなたも自分の本を共有してみませんか？
+    button:
+      registration: 今すぐ新規登録

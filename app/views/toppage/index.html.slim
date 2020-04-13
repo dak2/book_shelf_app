@@ -1,0 +1,12 @@
+= image_tag "toppage_image.jpeg", class: "img-size"
+
+.explanation-container
+  h1.white-text = t("toppage.title")
+  h6.white-text = t("toppage.explanation.explanation_1")
+  h6.white-text = t("toppage.explanation.explanation_2")
+  h6.white-text = t("toppage.explanation.explanation_3")
+  h6.white-text = t("toppage.explanation.explanation_4")
+  h6.white-text = t("toppage.explanation.explanation_5")
+br
+.inline-content-center
+  = link_to t("toppage.button.registration"), new_user_registration_path, class: "waves-effect waves-light btn"
