@@ -49,6 +49,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
+  gem 'better_errors', '~> 2.6'
+  gem 'binding_of_caller', '~> 0.8.0'
 end
 
 group :test do
@@ -63,17 +65,21 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'slim-rails'
-
 gem 'pry-byebug'
-
 gem 'httparty'
 
-gem "bootswatch", github: "thomaspark/bootswatch"
-gem 'bootstrap', '~> 4.3.1'
+gem 'materialize-sass', '~> 1.0.0'
+gem 'gravatar_image_tag', '~> 1.2'
 gem 'jquery-rails'
 
 gem 'rails-i18n'
 gem 'bcrypt'
 gem 'ridgepole'
 gem 'kaminari'
+<<<<<<< HEAD
 gem 'webpacker'
+=======
+
+## devise
+gem 'devise'
+>>>>>>> master

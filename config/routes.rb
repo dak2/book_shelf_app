@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
-  get '/libraries', to: 'libraries#index'
-  get 'login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  devise_for :users
+  root 'toppage#index'
   resources :libraries
   resources :posts
   resources :books

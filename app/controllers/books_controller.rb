@@ -73,7 +73,8 @@ class BooksController < ApplicationController
   # Get book info with google books api
   def get_book_with_api(title)
     uri = URI.parse(URI.encode("https://www.googleapis.com/books/v1/volumes?q=#{title}"))
-    book_response = connect_api(uri)["items"].first["volumeInfo"]
+    service = Books::ApiConnectService.new(uri)
+    book_response = service.execute["items"].first["volumeInfo"]
                      .select{ |key, value| key == "title" || key == "description" || key == "publisher" || key == "publishedDate" || key == "imageLinks"}
     @book_info_hash = book_response.inject({}) do |hash, (key, value)|
       if key.underscore == "image_links"
@@ -83,14 +84,6 @@ class BooksController < ApplicationController
       end
       hash
     end
-  end
-
-  def connect_api(uri)
-    https = Net::HTTP.new(uri.host, uri.port)
-    https.use_ssl = true
-    request = Net::HTTP::Get.new(uri.request_uri)
-    response = https.request(request)
-    JSON.parse(response.body)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
