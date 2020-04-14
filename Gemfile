@@ -50,7 +50,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
   gem 'better_errors', '~> 2.6'
-  gem 'binding_of_caller', '~> 0.8.0'
+  gem 'binding_of_caller', '~> 0.8.0'z
 end
 
 group :test do
@@ -76,10 +76,7 @@ gem 'rails-i18n'
 gem 'bcrypt'
 gem 'ridgepole'
 gem 'kaminari'
-<<<<<<< HEAD
 gem 'webpacker'
-=======
 
 ## devise
 gem 'devise'
->>>>>>> master
