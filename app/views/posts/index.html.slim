@@ -1,5 +1,5 @@
 - @posts.each do |post|
-  table.responsive-table
+  table
     thead
       tr
         th Image
@@ -19,4 +19,4 @@
 
 br
 
-= link_to t('activerecord.attributes.post.pages.new'), new_post_path, { class: "link-center" }
+= link_to t('activerecord.attributes.post.pages.new'), new_post_path, data: {"turbolinks" => false}

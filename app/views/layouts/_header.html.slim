@@ -5,15 +5,15 @@ nav.brown.darken-1
       ul#nav-mobile.right.hide-on-med-and-down
         - if user_signed_in?
           li
-            = link_to "投稿一覧", posts_path
+            = link_to "投稿一覧", posts_path, data: {"turbolinks" => false}
           li
-            = link_to "本棚一覧", libraries_path
+            = link_to "本棚一覧", libraries_path, data: {"turbolinks" => false}
           li
-            = link_to "マイページ", user_path(current_user.id)
+            = link_to "マイページ", user_path(current_user.id), data: {"turbolinks" => false}
           li
             = link_to "ログアウト", destroy_user_session_path, method: :delete
         - else
           li
-            = link_to "ログイン", new_user_session_path
+            = link_to "ログイン", new_user_session_path, data: {"turbolinks" => false}
           li
-            = link_to "新規登録", new_user_registration_path
+            = link_to "新規登録", new_user_registration_path, data: {"turbolinks" => false}

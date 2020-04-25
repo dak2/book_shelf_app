@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :bigint           not null, primary key
+#  title      :string(255)
+#  content    :text(65535)
+#  user_id    :integer
+#  book_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :book
