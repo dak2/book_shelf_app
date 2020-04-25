@@ -18,13 +18,13 @@
 console.log('Hello World from Webpacker')
 
 import Vue from "vue";
-import PostInfos from "../post-infos.vue";
+import PostForm from "../post-form.vue";
 
 document.addEventListener('DOMContentLoaded', () => {
-  const node = document.getElementById("post");
+  const node = document.getElementById("post-form");
   const props = JSON.parse(node.getAttribute("data"));
   const app = new Vue({
-    render: h => h(PostInfos, { props })
+    render: h => h(PostForm, { props })
   }).$mount();
   document.body.appendChild(app.$el);
 })
